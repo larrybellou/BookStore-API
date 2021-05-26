@@ -1,5 +1,6 @@
 using BookStore_API.Contracts;
 using BookStore_API.Data;
+using BookStore_API.Mappings;
 using BookStore_API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,6 +46,8 @@ namespace BookStore_API
                     );
             });
 
+            services.AddAutoMapper(typeof(Maps));
+
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo() 
                                             {   Title="Book Store API", 
@@ -83,6 +86,8 @@ namespace BookStore_API
             }
 
             app.UseCors("CorsPolicy");
+
+
 
             app.UseSwagger();
             app.UseSwaggerUI(c => {
