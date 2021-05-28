@@ -41,6 +41,12 @@ namespace BookStore_API.Services
             return Book;
         }
 
+        public async Task<bool> isExists(int id)
+        {
+            var Book = await FindById(id);
+            return Book != null && Book.Id > 0;
+        }
+
         public async Task<bool> Save()
         {
             var changes = await _db.SaveChangesAsync();
